@@ -32,6 +32,7 @@ cv2.imwrite(args["save_to"] + "/{}_lowfi_image_saliency.png".format(di), salienc
 # Initialise the more fine-grained saliency detector and compute the saliencyMap
 saliency = cv2.saliency.StaticSaliencyFineGrained_create()
 (success, saliencyMap) = saliency.computeSaliency(img)
+saliencyMap = (saliencyMap * 255).astype("uint8")
 
 # If we want a *binary* map to use for contour processing,
 # computing convex hulls, extract bounding boxes, etc... we can 
